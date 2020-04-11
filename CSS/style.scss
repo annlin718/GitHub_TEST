@@ -1,0 +1,100 @@
+$Primary-font: Arial, "Noto Sans TC", sans-serif;
+$primary-color: rgb(180, 178, 35);
+$primary-color2: #ca616a;
+$Primary-fontSize: 2rem;
+$Primary-height: 100vh;
+$Primary-Img-Image: 25%;
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+%message-shared {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+html,
+body {
+  //   background: $primary-color2  $primary-color;
+  //   background-size: 50%  100%;
+  //background: -webkit-linear-gradient(left bottom,blue 50%,lightgreen 50%);
+  background: -webkit-linear-gradient(left bottom, $primary-color 50%, $primary-color2 50%);
+  margin: 0;
+  padding: 0;
+  font-family: $Primary-font;
+}
+
+#divApp {
+  width: 100%;
+  height: $Primary-height;
+  text-align: center;
+  @extend %message-shared;
+
+  #picProduct {
+    @include transform(rotate(7deg));
+    width: $Primary-Img-Image;
+    border: 5px #ffffff double;
+    padding: 8px;
+    flex-shrink: 0;
+  }
+
+  #divInfo {
+    //width: 25%;
+    flex-shrink: 0;
+    text-align: left;
+    margin: 2%;
+    color: #202020;
+  }
+
+  h1 {
+    font-size: $Primary-fontSize;
+    display: inline-block;
+    line-height: 2rem;
+    width: fill-availabel;
+  }
+
+  p {
+    text-indent: 2rem;
+  }
+
+  .div_Colors {
+    width: 20px;
+    height: 20px;
+    border: solid 3px #202020;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  .div_Colors_Select {
+    border: 3px double #c8ff00 !important;
+  }
+
+
+  #BtnAddCart,
+  #BtnCart {
+    padding: 15px 10px;
+    font-weight: bolder;
+    outline: none;
+    border: 0;
+    margin-right: 5px;
+    color: #ffffff;
+  }
+  #BtnAddCart {
+    background-color: #484d7c;
+  }
+  #BtnCart {
+    background-color: #6c72a7;
+  }
+}
+
+.BtnDisable {
+  background-color: #b4b4b4 !important;
+  opacity: 0.8;
+}

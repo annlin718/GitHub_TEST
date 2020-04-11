@@ -1,0 +1,88 @@
+#divApp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+html,
+body {
+  background: -webkit-linear-gradient(left bottom, #b4b223 50%, #ca616a 50%);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, "Noto Sans TC", sans-serif;
+}
+
+#divApp {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+#divApp #picProduct {
+  -webkit-transform: rotate(7deg);
+  transform: rotate(7deg);
+  width: 25%;
+  border: 5px #ffffff double;
+  padding: 8px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+#divApp #divInfo {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  text-align: left;
+  margin: 2%;
+  color: #202020;
+}
+#divApp h1 {
+  font-size: 2rem;
+  display: inline-block;
+  line-height: 2rem;
+  width: fill-availabel;
+}
+#divApp p {
+  text-indent: 2rem;
+}
+#divApp .div_Colors {
+  width: 20px;
+  height: 20px;
+  border: solid 3px #202020;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+#divApp .div_Colors_Select {
+  border: 3px double #c8ff00 !important;
+}
+#divApp #BtnAddCart,
+#divApp #BtnCart {
+  padding: 15px 10px;
+  font-weight: bolder;
+  outline: none;
+  border: 0;
+  margin-right: 5px;
+  color: #ffffff;
+}
+#divApp #BtnAddCart {
+  background-color: #484d7c;
+}
+#divApp #BtnCart {
+  background-color: #6c72a7;
+}
+
+.BtnDisable {
+  background-color: #b4b4b4 !important;
+  opacity: 0.8;
+}
+/*# sourceMappingURL=style.css.map */
