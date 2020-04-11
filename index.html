@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS</title>
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="Vue_BasicTest.js" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="divMenu">
+
+    </div>
+    <div id="divApp">
+        <img id="picProduct" :src='imageURL' />
+        <div id="divInfo">
+            <h1>{{ Product }}</h1>
+            <p id="p_State">庫存狀態：
+                <font v-if="inventory > 10">In Stock</font>
+                <font v-else-if="inventory > 0">Almost Sold Out!</font>
+                <font v-else>Out of Stock</font>
+                <font>({{"剩餘："+ inventory}})</font>
+            </p>
+            
+            <div id="div_Details">
+                <p style="display: inline-block;">產品顏色：
+                    <!-- <font class="font_details" v-for="(detail,index) in details" v-bind:key="detail.id">
+                        {{index + 1}}.{{ detail.color }} <font v-if="!detail.isEnd">&nbsp;&nbsp;</font>
+                    </font> -->
+                    <div class="div_Colors" v-bind:key="detail.id" @mouseOver="ChangeColor(detail.Color,detail.id,index)" v-for="(detail,index) in details" 
+                    v-bind:style="[{ background: detail.color_HTML },styleObject]" v-bind:class="{div_Colors_Select: index == SelectIndex}"></div> ({{ SelectColor }})
+                </p>
+            </div>
+
+            <p>
+                <button type="button" id="BtnAddCart" v-on:click="addToCart" :disabled="!isStock" v-bind:class="{ BtnDisable: !isStock }">Add to Cart</button>
+                <button type="button" id="BtnCart">Cart ({{ PurchaseCnt }})</button>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
