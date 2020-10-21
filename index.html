@@ -14,33 +14,69 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body onload="checkLoginState()">
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '812829882802563',
+                cookie: true,
+                xfbml: true,
+                version: 'v8.0'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v8.0&appId=812829882802563&autoLogAppEvents=1"
+        nonce="neR8wk2S">
+    </script>
+
     <div id="divMenu">
 
     </div>
     <div id="divApp">
+        <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default"
+            data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
+
         <img id="picProduct" :src='imageURL' />
         <div id="divInfo">
             <h1>{{ Product }}</h1>
-            <p id="p_State">庫存狀態：
+            <p id="p_State">.庫存狀態：
                 <font v-if="inventory > 10">In Stock</font>
                 <font v-else-if="inventory > 0">Almost Sold Out!</font>
                 <font v-else>Out of Stock</font>
                 <font>({{"剩餘："+ inventory}})</font>
             </p>
-            
+
             <div id="div_Details">
                 <p style="display: inline-block;">產品顏色：
                     <!-- <font class="font_details" v-for="(detail,index) in details" v-bind:key="detail.id">
                         {{index + 1}}.{{ detail.color }} <font v-if="!detail.isEnd">&nbsp;&nbsp;</font>
                     </font> -->
-                    <div class="div_Colors" v-bind:key="detail.id" @mouseOver="ChangeColor(detail.Color,detail.id,index)" v-for="(detail,index) in details" 
-                    v-bind:style="[{ background: detail.color_HTML },styleObject]" v-bind:class="{div_Colors_Select: index == SelectIndex}"></div> ({{ SelectColor }})
+                    <div class="div_Colors" v-bind:key="detail.id"
+                        @mouseOver="ChangeColor(detail.Color,detail.id,index)" v-for="(detail,index) in details"
+                        v-bind:style="[{ background: detail.color_HTML },styleObject]"
+                        v-bind:class="{div_Colors_Select: index == SelectIndex}"></div> ({{ SelectColor }})
                 </p>
             </div>
 
             <p>
-                <button type="button" id="BtnAddCart" v-on:click="addToCart" :disabled="!isStock" v-bind:class="{ BtnDisable: !isStock }">Add to Cart</button>
+                <button type="button" id="BtnAddCart" v-on:click="addToCart" :disabled="!isStock"
+                    v-bind:class="{ BtnDisable: !isStock }">Add to Cart</button>
                 <button type="button" id="BtnCart">Cart ({{ PurchaseCnt }})</button>
             </p>
         </div>
@@ -48,3 +84,13 @@
 </body>
 
 </html>
+<script>
+    function checkLoginState() {
+        console.log("......");
+        FB.getLoginStatus(function (response) {
+            console.log(response);
+            statusChangeCallback(response);
+            console.log(response);
+        });
+    }
+</script>
